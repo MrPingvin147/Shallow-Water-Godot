@@ -84,8 +84,7 @@ func change_state(new_state: state_types):
 	if current_state != null:
 		current_state.on_state_exit()
 	current_state = states[new_state]
-	print(name, " changed state to ", new_state)
 	current_state.on_state_enter()
 
 func _on_player_created(pl: PlayerController):
-	player = player
+	player = pl

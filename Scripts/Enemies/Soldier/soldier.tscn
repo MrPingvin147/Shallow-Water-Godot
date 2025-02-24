@@ -102,7 +102,7 @@ radius = 600.0
 radius = 700.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmxop"]
-size = Vector2(42, 132.5)
+size = Vector2(68.5, 48.25)
 
 [node name="Soldier" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "states", "current_state")]
 collision_layer = 4
@@ -163,7 +163,7 @@ collision_layer = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-4, 9.25)
+position = Vector2(-58.75, 14)
 shape = SubResource("RectangleShape2D_jmxop")
 
 [node name="StateMachine" type="Node" parent="."]
