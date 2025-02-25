@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://lhoebnpkaq6p"]
+[gd_scene load_steps=54 format=3 uid="uid://lhoebnpkaq6p"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Movement.gd" id="1_ghr1i"]
 [ext_resource type="Script" path="res://Scripts/Player/combat_controller.gd" id="2_ccrpk"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b6us5q5rrqxcx" path="res://Shallow water art/Player/PlayerAnimations/WalkAnim/Standard_walking_3_Andet.png" id="5_ef1lx"]
 [ext_resource type="Texture2D" uid="uid://cun7emoonjjjb" path="res://Shallow water art/Map/Light/point_light.png" id="6_3c7w4"]
 [ext_resource type="Script" path="res://Scripts/Player/hit_color_change.gd" id="8_fijws"]
+[ext_resource type="Texture2D" uid="uid://y2uqvs5e0q0u" path="res://Shallow water art/Player/PlayerAnimations/AttackAnim/Weap_2_Idle-ATK-F.png" id="9_ke221"]
+[ext_resource type="Texture2D" uid="uid://8rrxbapawdts" path="res://Shallow water art/Player/PlayerAnimations/AttackAnim/Weap_2_Idle-ATK-B.png" id="10_d8wav"]
+[ext_resource type="Script" path="res://Scripts/Player/weapon_sprite.gd" id="11_rr5vk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_my5vm"]
 radius = 25.0
@@ -252,11 +255,75 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjkgo"]
+atlas = ExtResource("9_ke221")
+region = Rect2(0, 0, 2144, 1224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdf41"]
+atlas = ExtResource("9_ke221")
+region = Rect2(2144, 0, 2144, 1224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kckk"]
+atlas = ExtResource("9_ke221")
+region = Rect2(4288, 0, 2144, 1224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc8rs"]
+atlas = ExtResource("10_d8wav")
+region = Rect2(0, 0, 2144, 1224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gdlr"]
+atlas = ExtResource("10_d8wav")
+region = Rect2(2144, 0, 2144, 1224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdkj0"]
+atlas = ExtResource("10_d8wav")
+region = Rect2(4288, 0, 2144, 1224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh4qi"]
+atlas = ExtResource("10_d8wav")
+region = Rect2(6432, 0, 2144, 1224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mamos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjkgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdf41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kckk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc8rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gdlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdkj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh4qi")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_g0ttv"]
 radius = 60.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(10, 56)
 collision_mask = 14
 script = ExtResource("1_ghr1i")
 speed = 700
@@ -289,6 +356,13 @@ script = ExtResource("8_fijws")
 color = Color(0.57391, 0.255101, 0.28061, 1)
 anim_time = 0.1
 
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.41, -28.935)
+scale = Vector2(0.13, 0.13)
+sprite_frames = SubResource("SpriteFrames_mamos")
+animation = &"Empty"
+script = ExtResource("11_rr5vk")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 0.9)
 process_callback = 0
@@ -310,5 +384,7 @@ monitorable = false
 position = Vector2(-60, 0)
 shape = SubResource("CircleShape2D_g0ttv")
 
+[connection signal="player_attacked" from="CombatController" to="WeaponSprite" method="_on_combat_controller_player_attacked"]
 [connection signal="player_hit" from="HealthController" to="PlayerSprite" method="_on_entity_hit"]
+[connection signal="animation_finished" from="WeaponSprite" to="WeaponSprite" method="_on_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="CombatController" method="_on_attack_area_body_entered"]

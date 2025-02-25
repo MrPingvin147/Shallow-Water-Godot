@@ -1,6 +1,8 @@
 extends Node2D
 class_name CombatController
 
+signal player_attacked()
+
 @export var base_damage := 20
 @export var attack_cooldown := 0.1
 @export var current_attack_cooldown: float
@@ -20,8 +22,9 @@ func _physics_process(_delta: float) -> void:
 func attack():
 	if (attack_area.monitoring == true):
 		return
-	attack_area.monitoring = true
+	attack_area.set_deferred("monitoring",true)
 	current_attack_cooldown = 0
+	player_attacked.emit()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -30,4 +33,4 @@ func _input(event: InputEvent) -> void:
 # React to enemy body entering attack area and call take_damage
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	body.take_damage(base_damage)
-	attack_area.monitoring = false
+	attack_area.set_deferred("monitoring",false)

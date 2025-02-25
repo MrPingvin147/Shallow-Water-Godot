@@ -1,11 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://10o75gv04vfw"]
+[gd_scene load_steps=27 format=3 uid="uid://10o75gv04vfw"]
 
 [ext_resource type="Script" path="res://Scenes/Soldier.gd" id="1_2mf3q"]
 [ext_resource type="Texture2D" uid="uid://dpfmgdihq8ax6" path="res://Shallow water art/Enemy/Soldier/Animations/soldierWalk.png" id="2_u0q6e"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Flip_ray.gd" id="3_b5pgj"]
+[ext_resource type="Texture2D" uid="uid://5n81axih0pnx" path="res://Shallow water art/Enemy/Soldier/Animations/Spear.png" id="3_n8oqh"]
 [ext_resource type="Script" path="res://Scripts/Enemies/States/Patrol.gd" id="4_isqhy"]
 [ext_resource type="Script" path="res://Scripts/Enemies/States/Chase.gd" id="5_txdgk"]
-[ext_resource type="Script" path="res://Scripts/Enemies/WaterCrab/Contact_attack.gd" id="6_561ef"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Soldier/animation_attack.gd" id="6_o56tc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxw6r"]
 atlas = ExtResource("2_u0q6e")
@@ -92,6 +93,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_bw7yl"]
+resource_name = "Attack"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-30, -10), Vector2(0, 0), Vector2(-30, 0), Vector2(0, 0), Vector2(-30, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../WeaponSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.265387, 0.0, 0.0, 0.0, -0.26529]
+}
+
+[sub_resource type="Animation" id="Animation_fe5p8"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../WeaponSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.44346]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tp5kl"]
+_data = {
+"Attack": SubResource("Animation_bw7yl"),
+"RESET": SubResource("Animation_fe5p8")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej6fn"]
 size = Vector2(41, 131)
 
@@ -108,27 +170,41 @@ size = Vector2(68.5, 48.25)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_2mf3q")
-sprite = NodePath("AnimatedSprite2D")
+sprite = NodePath("EnemySprite")
 states = [NodePath("StateMachine/Patrol"), NodePath("StateMachine/Chase"), NodePath("StateMachine/Attack")]
 current_state = NodePath("StateMachine/Patrol")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_68l6c")
 animation = &"Walk"
 frame_progress = 0.9259
 
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_n8oqh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponSprite"]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_tp5kl")
+}
+
 [node name="BaseCollider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-4, 10)
 shape = SubResource("RectangleShape2D_ej6fn")
 
 [node name="FlipGroundRay" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-37, 41)
 collision_mask = 2
 hit_from_inside = true
 script = ExtResource("3_b5pgj")
 
 [node name="FlipWallRay" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-24, 14)
 target_position = Vector2(-30, 0)
 collision_mask = 8
@@ -142,6 +218,7 @@ collision_mask = 10
 hit_from_inside = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 modulate = Color(1, 0, 0, 0.278431)
 collision_layer = 4
 monitorable = false
@@ -150,6 +227,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_xrfdc")
 
 [node name="ChaseArea" type="Area2D" parent="."]
+visible = false
 modulate = Color(0, 1, 1, 0.360784)
 collision_layer = 4
 monitorable = false
@@ -158,6 +236,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_u2svu")
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 modulate = Color(0, 1, 1, 0.360784)
 collision_layer = 4
 monitorable = false
@@ -182,5 +261,6 @@ attack_area = NodePath("../../AttackArea")
 chase_check_ray = NodePath("../../ChaseCheckRay")
 speed_multiplier = 1.1
 
-[node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("6_561ef")
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_sprite")]
+script = ExtResource("6_o56tc")
+anim_sprite = NodePath("")
