@@ -1,7 +1,9 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var sprite: CanvasItem
+signal on_enemy_hit
+
+@export var enemy_animator: AnimationPlayer
 var player: PlayerController
 
 @export_category("States")
@@ -43,11 +45,6 @@ func _process(delta: float) -> void:
 		return
 	
 	current_state.do_process(delta)
-	
-	current_damage_anim_time += get_process_delta_time()
-	
-	if current_damage_anim_time > damage_anim_time:
-		sprite.self_modulate = Color(1,1,1)
 
 func _physics_process(delta: float) -> void:
 	if current_state == null:
@@ -56,17 +53,12 @@ func _physics_process(delta: float) -> void:
 	current_state.do_physics_process(delta)
 
 func take_damage(damage: int):
-	trigger_damage_anim()
-	
 	if (current_health - damage <= 0):
 		die()
 		return
 	current_health -= damage
+	on_enemy_hit.emit()
 	print(name, " health: ", current_health)
-
-func trigger_damage_anim():
-	sprite.self_modulate = Color(1,0.4,0.4,1)
-	current_damage_anim_time = 0
 
 func die():
 	print(name + " has died")
@@ -85,6 +77,14 @@ func change_state(new_state: state_types):
 		current_state.on_state_exit()
 	current_state = states[new_state]
 	current_state.on_state_enter()
+	
+	match new_state:
+		state_types.PATROL:
+			enemy_animator.play("Patrol")
+		state_types.CHASE:
+			enemy_animator.play("Chase")
+		state_types.ATTACK:
+			enemy_animator.play("Attack")
 
 func _on_player_created(pl: PlayerController):
 	player = pl

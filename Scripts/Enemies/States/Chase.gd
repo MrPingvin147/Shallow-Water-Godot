@@ -26,7 +26,7 @@ func do_process(_delta: float):
 		enemy.change_state(enemy.state_types.PATROL)
 	pass
 
-func do_physics_process(delta: float):
+func do_physics_process(_delta: float):
 	if !enemy.is_on_floor():
 		enemy.velocity.y += enemy.gravity
 	

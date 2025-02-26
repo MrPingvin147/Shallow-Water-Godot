@@ -1,11 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnn7tkacf05qi"]
+[gd_scene load_steps=16 format=3 uid="uid://cnn7tkacf05qi"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/WaterCrab/Water_crab.gd" id="1_shtdt"]
 [ext_resource type="Texture2D" uid="uid://bnjfsclmfeh7e" path="res://Shallow water art/Enemy/WaterCrab/crab_DEMO.png" id="2_hyxcl"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Flip_ray.gd" id="3_3pd4f"]
+[ext_resource type="Script" path="res://Scripts/Player/hit_color_change.gd" id="3_ldn6g"]
 [ext_resource type="Script" path="res://Scripts/Enemies/States/Patrol.gd" id="4_56nhw"]
 [ext_resource type="Script" path="res://Scripts/Enemies/States/Chase.gd" id="5_rd0xn"]
 [ext_resource type="Script" path="res://Scripts/Enemies/WaterCrab/Contact_attack.gd" id="6_oxyii"]
+
+[sub_resource type="Animation" id="Animation_6k126"]
+resource_name = "Patrol"
+
+[sub_resource type="Animation" id="Animation_qsvne"]
+resource_name = "Chase"
+
+[sub_resource type="Animation" id="Animation_pf57e"]
+resource_name = "Attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rg35t"]
+_data = {
+"Attack": SubResource("Animation_pf57e"),
+"Chase": SubResource("Animation_qsvne"),
+"Patrol": SubResource("Animation_6k126")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix64d"]
 radius = 41.0
@@ -21,13 +38,13 @@ radius = 700.0
 radius = 42.0
 height = 116.0
 
-[node name="WaterCrab" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "states", "current_state")]
+[node name="WaterCrab" type="CharacterBody2D" node_paths=PackedStringArray("enemy_animator", "states", "current_state")]
 collision_layer = 4
 collision_mask = 11
 platform_floor_layers = 4294967282
 platform_wall_layers = 8
 script = ExtResource("1_shtdt")
-sprite = NodePath("Sprite")
+enemy_animator = NodePath("EnemyAnimator")
 states = [NodePath("StateMachine/Patrol"), NodePath("StateMachine/Chase"), NodePath("StateMachine/Attack")]
 current_state = NodePath("StateMachine/Patrol")
 base_speed = 300
@@ -35,6 +52,13 @@ base_speed = 300
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_hyxcl")
+script = ExtResource("3_ldn6g")
+color = Color(0.712692, 1.2514e-06, 4.81307e-07, 1)
+
+[node name="EnemyAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rg35t")
+}
 
 [node name="BaseCollider" type="CollisionShape2D" parent="."]
 position = Vector2(9, 14)
@@ -104,3 +128,5 @@ speed_multiplier = 1.1
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("6_oxyii")
+
+[connection signal="on_enemy_hit" from="." to="Sprite" method="_on_entity_hit"]
