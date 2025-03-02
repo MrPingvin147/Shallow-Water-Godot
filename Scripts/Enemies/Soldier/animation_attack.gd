@@ -32,7 +32,4 @@ func _on_body_entered(_body: Node2D):
 	pass
 
 func _on_animation_finished(anim_name: String):
-	if anim_name == "Attack":
-		enemy.change_state(enemy.state_types.CHASE)
-	else:
-		printerr("Animation that finished wasn't Attack as expected")
+	enemy.change_state(enemy.state_types.CHASE)

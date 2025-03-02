@@ -29,8 +29,11 @@ enum PlatformType {
 
 @export_category("Spawn Platform")
 @export var spawn_offset := Vector2.ZERO
-
 @export var spawn_platform_type: PlatformType
+@export var spawn_amount: int = 1:
+	set(value):
+		if value > 0:
+			spawn_amount = value
 
 @export var place_left: bool:
 	set(value):
@@ -128,23 +131,27 @@ func place_platform(direction: int):
 		Vector2(0,294)
 	]
 	
-	# Create object in scene
-	var platform := platform_scene.instantiate()
-	parent.add_child(platform)
-	platform.owner = get_tree().edited_scene_root
-	
-	# Change objects start settings
-	platform.position = position + placement[direction] + spawn_offset
-	platform.platform_type = spawn_platform_type
-	platform.spawn_platform_type = spawn_platform_type
-	var node_name: String
-	
-	match spawn_platform_type:
-		PlatformType.TOP:
-			node_name = "GTop"
-		PlatformType.TOPRIGHT:
-			node_name = "GTopRight"
-		PlatformType.RIGHT:
-			node_name = "GRight"
-	
-	platform.name = node_name
+	for i in range(spawn_amount):
+		# Create object in scene
+		var platform := platform_scene.instantiate()
+		parent.add_child(platform)
+		platform.owner = get_tree().edited_scene_root
+		
+		# Change objects start settings
+		platform.position = position + (placement[direction] + spawn_offset) * (i + 1)
+		platform.platform_type = spawn_platform_type
+		platform.spawn_platform_type = spawn_platform_type
+		platform.turn_h = turn_h
+		platform.turn_v = turn_v
+		
+		var node_name: String
+		
+		match spawn_platform_type:
+			PlatformType.TOP:
+				node_name = "GTop"
+			PlatformType.TOPRIGHT:
+				node_name = "GTopRight"
+			PlatformType.RIGHT:
+				node_name = "GRight"
+		
+		platform.name = node_name

@@ -64,16 +64,12 @@ spawn_platform_type = 4
 
 [node name="GTopLeft" parent="StartArea/Platforms" instance=ExtResource("4_7vua4")]
 position = Vector2(-2198, 451)
-scale = Vector2(-1, 1)
 platform_type = 1
-flip_h = true
 spawn_platform_type = 3
 
 [node name="GLeft" parent="StartArea/Platforms" instance=ExtResource("4_7vua4")]
 position = Vector2(-2198, 745)
-scale = Vector2(-1, 1)
 platform_type = 2
-flip_h = true
 spawn_platform_type = 3
 
 [node name="GRight" parent="StartArea/Platforms" instance=ExtResource("4_7vua4")]

@@ -1,0 +1,579 @@
+[gd_scene load_steps=13 format=3 uid="uid://cx432k4tx85bv"]
+
+[ext_resource type="PackedScene" uid="uid://lik3h0awp1rs" path="res://Scripts/Map/Platforms/colliding_ground.tscn" id="1_nevg1"]
+[ext_resource type="PackedScene" uid="uid://b82xcsx57fnl7" path="res://Scripts/Map/Platforms/pillar_with_collision.tscn" id="3_3l772"]
+[ext_resource type="Texture2D" uid="uid://c8yvasy3rfjns" path="res://Shallow water art/Map/StatueBossRoom/Statue_Front.png" id="3_654wc"]
+[ext_resource type="Texture2D" uid="uid://b1bx8owreahpn" path="res://Shallow water art/Map/Background.png" id="3_j1lsl"]
+[ext_resource type="Texture2D" uid="uid://dmqtdp3bo4cfi" path="res://Shallow water art/Map/Platform/U Platform B/pure_black.png" id="3_j302k"]
+[ext_resource type="PackedScene" uid="uid://dufyc03ab461p" path="res://Scripts/Map/DecorativeElements/Lights/latern.tscn" id="4_7rwiy"]
+[ext_resource type="Texture2D" uid="uid://bn3fjoqaiet6j" path="res://Shallow water art/Map/StatueBossRoom/pillar_F.png" id="4_h8i76"]
+[ext_resource type="Texture2D" uid="uid://nkgojwtk2vn0" path="res://Shallow water art/Map/Platform/Gradient/Gradient.png" id="4_ink8n"]
+[ext_resource type="Texture2D" uid="uid://dcfu1dmhvdq7d" path="res://Shallow water art/Map/StatueBossRoom/Alter.png" id="4_y6fwq"]
+[ext_resource type="PackedScene" uid="uid://lhoebnpkaq6p" path="res://Scripts/Player/player.tscn" id="5_dusw5"]
+[ext_resource type="FontFile" uid="uid://bxdg5vv7d6h17" path="res://Shallow water art/Font/CinzelDecorative-Bold.ttf" id="5_o6hjt"]
+
+[sub_resource type="Theme" id="Theme_gal01"]
+default_font = ExtResource("5_o6hjt")
+default_font_size = 153
+
+[node name="BossArena" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Collisions" type="Node2D" parent="Map"]
+metadata/_edit_lock_ = true
+
+[node name="FloatingPlatform" type="Node2D" parent="Map/Collisions"]
+metadata/_edit_lock_ = true
+
+[node name="BigGround" type="Node2D" parent="Map/Collisions"]
+metadata/_edit_lock_ = true
+
+[node name="Ground" type="Node2D" parent="Map/Collisions"]
+
+[node name="CollidingGround" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(0, 234)
+
+[node name="GTop2" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(294, 234)
+
+[node name="GRight" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(-287, -5)
+platform_type = 2
+spawn_platform_type = 2
+
+[node name="GTop" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GRight2" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(-287, -299)
+platform_type = 2
+spawn_platform_type = 2
+
+[node name="GTop3" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(295, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GTop4" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(589, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GTop5" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(883, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GTop6" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1177, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GTop7" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1471, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GTop8" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1765, -537)
+scale = Vector2(1, -1)
+turn_v = true
+
+[node name="GTop9" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2059, -537)
+scale = Vector2(1, -1)
+turn_v = true
+spawn_platform_type = 1
+
+[node name="GTop10" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(588, 234)
+
+[node name="GTop11" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(882, 234)
+
+[node name="GTop12" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1176, 234)
+
+[node name="GTop13" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1470, 234)
+
+[node name="GTop14" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(1764, 234)
+
+[node name="GTop15" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2058, 234)
+
+[node name="GTopRight" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2165, -537)
+scale = Vector2(1, -1)
+platform_type = 1
+turn_v = true
+spawn_platform_type = 2
+
+[node name="GRight3" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2165, -831)
+platform_type = 2
+spawn_platform_type = 2
+
+[node name="GRight4" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+z_index = 1
+position = Vector2(2165, -1125)
+platform_type = 2
+spawn_platform_type = 2
+
+[node name="GRight5" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2165, -1419)
+platform_type = 2
+spawn_platform_type = 2
+
+[node name="GRight6" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2165, -1713)
+platform_type = 2
+spawn_platform_type = 2
+
+[node name="GTop16" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2352, 234)
+spawn_amount = 5
+
+[node name="GTop17" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2646, 234)
+
+[node name="GTop18" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(2940, 234)
+
+[node name="GTop19" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(3234, 234)
+
+[node name="GTop20" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(3528, 234)
+spawn_amount = 5
+
+[node name="GTop21" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(3822, 234)
+
+[node name="GTop22" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(4116, 234)
+
+[node name="GTop23" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(4410, 234)
+
+[node name="GTop24" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(4704, 234)
+
+[node name="GTop25" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(4998, 234)
+spawn_amount = 3
+
+[node name="GTop26" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(5292, 234)
+
+[node name="GTop27" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(5586, 234)
+
+[node name="GTop28" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(5880, 234)
+
+[node name="GRight7" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(6131, -5)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+spawn_amount = 7
+
+[node name="GRight8" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(6131, -299)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+
+[node name="GRight9" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(6131, -593)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+
+[node name="GRight10" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(6131, -887)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+
+[node name="GRight11" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+z_index = 1
+position = Vector2(6131, -1181)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+
+[node name="GRight12" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(6131, -1475)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+
+[node name="GRight13" parent="Map/Collisions/Ground" instance=ExtResource("1_nevg1")]
+position = Vector2(6131, -1769)
+scale = Vector2(-1, 1)
+platform_type = 2
+turn_h = true
+spawn_platform_type = 2
+
+[node name="Pillars" type="Node2D" parent="Map/Collisions"]
+metadata/_edit_lock_ = true
+
+[node name="PillarWithCollision" parent="Map/Collisions/Pillars" instance=ExtResource("3_3l772")]
+position = Vector2(5683, -510)
+
+[node name="PillarWithCollision2" parent="Map/Collisions/Pillars" instance=ExtResource("3_3l772")]
+position = Vector2(5070, -510)
+
+[node name="PillarWithCollision3" parent="Map/Collisions/Pillars" instance=ExtResource("3_3l772")]
+position = Vector2(4457, -510)
+
+[node name="PillarWithCollision4" parent="Map/Collisions/Pillars" instance=ExtResource("3_3l772")]
+position = Vector2(3844, -510)
+
+[node name="PillarWithCollision5" parent="Map/Collisions/Pillars" instance=ExtResource("3_3l772")]
+position = Vector2(3232, -510)
+
+[node name="PillarWithCollision6" parent="Map/Collisions/Pillars" instance=ExtResource("3_3l772")]
+position = Vector2(2619, -510)
+
+[node name="Decorative" type="Node2D" parent="Map"]
+metadata/_edit_lock_ = true
+
+[node name="DarkAreas" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="PureBlack" type="Sprite2D" parent="Map/Decorative/DarkAreas"]
+z_index = 3
+position = Vector2(460, -1272.5)
+scale = Vector2(0.565455, 0.391797)
+texture = ExtResource("3_j302k")
+
+[node name="PureBlack2" type="Sprite2D" parent="Map/Decorative/DarkAreas"]
+z_index = 3
+position = Vector2(-610.5, 99.75)
+scale = Vector2(0.175091, 0.544348)
+texture = ExtResource("3_j302k")
+
+[node name="PureBlack3" type="Sprite2D" parent="Map/Decorative/DarkAreas"]
+z_index = 3
+position = Vector2(3444.25, 652.875)
+scale = Vector2(1.30245, 0.179476)
+texture = ExtResource("3_j302k")
+
+[node name="PureBlack4" type="Sprite2D" parent="Map/Decorative/DarkAreas"]
+z_index = 3
+position = Vector2(6644, -774)
+scale = Vector2(0.133818, 0.772924)
+texture = ExtResource("3_j302k")
+
+[node name="PureBlack5" type="Sprite2D" parent="Map/Decorative/DarkAreas"]
+z_index = 3
+position = Vector2(6152, 264)
+scale = Vector2(0.0454546, 0.0806936)
+texture = ExtResource("3_j302k")
+
+[node name="Lights" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="Latern" parent="Map/Decorative/Lights" instance=ExtResource("4_7rwiy")]
+position = Vector2(2623, 48)
+
+[node name="Latern2" parent="Map/Decorative/Lights" instance=ExtResource("4_7rwiy")]
+position = Vector2(3240, 48)
+
+[node name="Latern3" parent="Map/Decorative/Lights" instance=ExtResource("4_7rwiy")]
+position = Vector2(3851, 48)
+
+[node name="Latern4" parent="Map/Decorative/Lights" instance=ExtResource("4_7rwiy")]
+position = Vector2(4465, 48)
+
+[node name="Latern5" parent="Map/Decorative/Lights" instance=ExtResource("4_7rwiy")]
+position = Vector2(5073, 48)
+
+[node name="Latern6" parent="Map/Decorative/Lights" instance=ExtResource("4_7rwiy")]
+position = Vector2(5689, 48)
+
+[node name="Gradients" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="Gradient" type="Sprite2D" parent="Map/Decorative/Gradients"]
+z_index = 3
+position = Vector2(2636.95, 216.062)
+rotation = -1.57079
+scale = Vector2(0.225311, 5.04378)
+texture = ExtResource("4_ink8n")
+
+[node name="Gradient2" type="Sprite2D" parent="Map/Decorative/Gradients"]
+z_index = 3
+position = Vector2(6129, -846.862)
+rotation = -3.14159
+scale = Vector2(0.204197, 1.52893)
+texture = ExtResource("4_ink8n")
+
+[node name="Gradient3" type="Sprite2D" parent="Map/Decorative/Gradients"]
+z_index = 3
+position = Vector2(238.495, -132.5)
+scale = Vector2(0.514273, 0.683218)
+texture = ExtResource("4_ink8n")
+
+[node name="Platforms" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="Sparkles" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="Pillars" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="PillarF" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(-61, -279)
+rotation = 0.25301
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF2" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(81, -243)
+rotation = -0.2803
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF3" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(805, -193)
+rotation = 0.152136
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF4" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(487, -276)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF5" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(1137, -198)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF6" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(1460, -283)
+rotation = 0.248171
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF7" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(1657, -316)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="PillarF8" type="Sprite2D" parent="Map/Decorative/Pillars"]
+light_mask = 2
+visibility_layer = 2
+z_index = -3
+position = Vector2(1910, -197)
+rotation = -0.0931635
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_h8i76")
+
+[node name="Statues" type="Node2D" parent="Map/Decorative"]
+metadata/_edit_lock_ = true
+
+[node name="StatueFront" type="Sprite2D" parent="Map/Decorative/Statues"]
+modulate = Color(0.295867, 0.295866, 0.295866, 1)
+z_index = -1
+position = Vector2(2927, -324)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_654wc")
+
+[node name="Alter" type="Sprite2D" parent="Map/Decorative/Statues/StatueFront"]
+position = Vector2(-44, 1264)
+texture = ExtResource("4_y6fwq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Map/Decorative/Statues/StatueFront/Alter"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1338.5
+offset_right = -1382.0
+offset_bottom = -1131.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gal01")
+theme_override_colors/default_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+bbcode_enabled = true
+text = "[center]  v[/center]
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StatueFront2" type="Sprite2D" parent="Map/Decorative/Statues"]
+modulate = Color(0.295867, 0.295866, 0.295866, 1)
+z_index = -1
+position = Vector2(3542, -324)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_654wc")
+
+[node name="Alter" type="Sprite2D" parent="Map/Decorative/Statues/StatueFront2"]
+position = Vector2(-44, 1264)
+texture = ExtResource("4_y6fwq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Map/Decorative/Statues/StatueFront2/Alter"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1338.5
+offset_right = -1382.0
+offset_bottom = -1131.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gal01")
+theme_override_colors/default_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+bbcode_enabled = true
+text = "[center]  iv[/center]
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StatueFront3" type="Sprite2D" parent="Map/Decorative/Statues"]
+modulate = Color(0.295867, 0.295866, 0.295866, 1)
+z_index = -1
+position = Vector2(4153, -324)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_654wc")
+
+[node name="Alter" type="Sprite2D" parent="Map/Decorative/Statues/StatueFront3"]
+position = Vector2(-44, 1264)
+texture = ExtResource("4_y6fwq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Map/Decorative/Statues/StatueFront3/Alter"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1338.5
+offset_right = -1382.0
+offset_bottom = -1131.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gal01")
+theme_override_colors/default_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+bbcode_enabled = true
+text = "[center]  iii[/center]
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StatueFront4" type="Sprite2D" parent="Map/Decorative/Statues"]
+modulate = Color(0.295867, 0.295866, 0.295866, 1)
+z_index = -1
+position = Vector2(4768, -324)
+scale = Vector2(0.25, 0.25)
+
+[node name="Alter" type="Sprite2D" parent="Map/Decorative/Statues/StatueFront4"]
+position = Vector2(-44, 1264)
+texture = ExtResource("4_y6fwq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Map/Decorative/Statues/StatueFront4/Alter"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1338.5
+offset_right = -1382.0
+offset_bottom = -1131.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gal01")
+theme_override_colors/default_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+bbcode_enabled = true
+text = "[center]  ii[/center]
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StatueFront5" type="Sprite2D" parent="Map/Decorative/Statues"]
+modulate = Color(0.295867, 0.295866, 0.295866, 1)
+z_index = -1
+position = Vector2(5379, -324)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_654wc")
+
+[node name="Alter" type="Sprite2D" parent="Map/Decorative/Statues/StatueFront5"]
+position = Vector2(-44, 1264)
+texture = ExtResource("4_y6fwq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Map/Decorative/Statues/StatueFront5/Alter"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1338.5
+offset_right = -1382.0
+offset_bottom = -1131.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gal01")
+theme_override_colors/default_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+bbcode_enabled = true
+text = "[center]  i[/center]
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Map"]
+color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[node name="Background" type="Sprite2D" parent="Map"]
+light_mask = 8
+z_index = -4
+position = Vector2(3615, -718)
+scale = Vector2(3.40523, 1.8809)
+texture = ExtResource("3_j1lsl")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("5_dusw5")]
+position = Vector2(3305, 34)

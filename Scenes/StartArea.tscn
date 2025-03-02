@@ -548,7 +548,6 @@ metadata/_edit_lock_ = true
 
 [node name="DripCave" type="Node2D" parent="Map/Decorative"]
 scale = Vector2(0.276441, 0.276441)
-metadata/_edit_lock_ = true
 
 [node name="D-cave1" type="Sprite2D" parent="Map/Decorative/DripCave"]
 z_index = -1
@@ -562,58 +561,64 @@ scale = Vector2(1.13416, 1.50123)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt8" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -2
 position = Vector2(-5599.75, 2373.02)
 scale = Vector2(1.25018, 2.1874)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt9" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -1
 position = Vector2(-19646.1, 1776.15)
 scale = Vector2(2.094, 2.1874)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt10" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
-position = Vector2(-16064.9, 9354.62)
-scale = Vector2(1.85168, 2.2024)
+z_index = -2
+position = Vector2(-15388.5, 9770.62)
+scale = Vector2(1.85168, 1.50282)
+texture = ExtResource("8_r1j7y")
+
+[node name="DripCave-bt16" type="Sprite2D" parent="Map/Decorative/DripCave"]
+z_index = -1
+position = Vector2(-15977.4, 9401.64)
+scale = Vector2(1.97046, 2.2024)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt11" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -1
 position = Vector2(-6695.82, 9354.62)
 scale = Vector2(1.85168, 2.2024)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt15" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -1
 position = Vector2(2329.61, 9072.46)
 scale = Vector2(1.85168, 2.41636)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt12" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -1
 position = Vector2(-6695.82, 6909.25)
 rotation = -3.14159
 scale = Vector2(1.85168, 2.2024)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt14" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -1
 position = Vector2(3827.22, 6305.14)
 rotation = -3.14159
 scale = Vector2(1.85168, 2.2024)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt13" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = 2
+z_index = -1
 position = Vector2(-16822.6, 6909.25)
 rotation = -3.14159
 scale = Vector2(2.21666, 2.2024)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt5" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = -1
+z_index = -2
 position = Vector2(-22543.7, 2196.86)
 scale = Vector2(1.72933, 1.67264)
 texture = ExtResource("8_r1j7y")
@@ -625,26 +630,26 @@ scale = Vector2(1.60366, 2.64927)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt7" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = -1
+z_index = -2
 position = Vector2(-15525.9, 2188.53)
 scale = Vector2(1.60366, 2.64927)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt4" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = -1
+z_index = -2
 position = Vector2(-542.611, -824.768)
 scale = Vector2(1.13416, 1.50123)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt2" type="Sprite2D" parent="Map/Decorative/DripCave"]
 z_index = -1
-position = Vector2(-33.1986, 947.362)
+position = Vector2(-21.7044, 886.265)
 rotation = 3.14159
 scale = Vector2(1.36038, 1.36038)
 texture = ExtResource("8_r1j7y")
 
 [node name="DripCave-bt3" type="Sprite2D" parent="Map/Decorative/DripCave"]
-z_index = -1
+z_index = -3
 position = Vector2(-61.4959, 260.453)
 rotation = 3.14159
 scale = Vector2(1.36038, 1.36038)
@@ -953,7 +958,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-1175, 637)
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
@@ -963,7 +968,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-1769, 637)
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("13_cc1ao")
@@ -972,7 +977,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-2758.7, 454.4)
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
@@ -982,7 +987,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-3352.7, 454.4)
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("13_cc1ao")
@@ -991,7 +996,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-5295.7, 244.4)
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
@@ -1001,7 +1006,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-5889.7, 244.4)
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("13_cc1ao")
@@ -1010,7 +1015,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-4770.7, 2385.4)
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
@@ -1020,7 +1025,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-5364.7, 2385.4)
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("13_cc1ao")
@@ -1029,7 +1034,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-3400.7, 2280.4)
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
@@ -1039,7 +1044,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-3994.7, 2280.4)
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("13_cc1ao")
@@ -1048,7 +1053,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-1887.7, 2466.4)
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
@@ -1058,7 +1063,7 @@ texture = ExtResource("13_cc1ao")
 modulate = Color(0.259294, 0.259294, 0.259294, 1)
 light_mask = 8
 visibility_layer = 8
-z_index = -1
+z_index = -2
 position = Vector2(-2481.7, 2466.4)
 scale = Vector2(0.2, -0.2)
 texture = ExtResource("13_cc1ao")
@@ -1101,7 +1106,7 @@ color = Color(0.442911, 0.442911, 0.442911, 1)
 
 [node name="Background" type="Sprite2D" parent="Map"]
 light_mask = 8
-z_index = -3
+z_index = -4
 position = Vector2(-2224, 1672)
 scale = Vector2(3.475, 4.46111)
 texture = ExtResource("4_8uyxt")

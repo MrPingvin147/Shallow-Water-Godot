@@ -6,6 +6,7 @@
 [node name="Lamp" type="Sprite2D"]
 light_mask = 2
 visibility_layer = 2
+z_index = -1
 position = Vector2(-2492, 1362)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_fweve")
@@ -16,7 +17,7 @@ metadata/_edit_lock_ = true
 position = Vector2(13.333, -233.334)
 color = Color(1, 0.776471, 0.505882, 1)
 blend_mode = 2
-range_item_cull_mask = 7
+range_item_cull_mask = 6
 shadow_item_cull_mask = 15
 texture = ExtResource("2_lxdrl")
 texture_scale = 8.61

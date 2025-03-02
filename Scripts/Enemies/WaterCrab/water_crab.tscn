@@ -8,14 +8,14 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/States/Chase.gd" id="5_rd0xn"]
 [ext_resource type="Script" path="res://Scripts/Enemies/WaterCrab/Contact_attack.gd" id="6_oxyii"]
 
-[sub_resource type="Animation" id="Animation_6k126"]
-resource_name = "Patrol"
+[sub_resource type="Animation" id="Animation_pf57e"]
+resource_name = "Attack"
 
 [sub_resource type="Animation" id="Animation_qsvne"]
 resource_name = "Chase"
 
-[sub_resource type="Animation" id="Animation_pf57e"]
-resource_name = "Attack"
+[sub_resource type="Animation" id="Animation_6k126"]
+resource_name = "Patrol"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rg35t"]
 _data = {
@@ -61,6 +61,7 @@ libraries = {
 }
 
 [node name="BaseCollider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(9, 14)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ix64d")
@@ -85,6 +86,7 @@ collision_mask = 10
 hit_from_inside = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 modulate = Color(1, 0, 0, 0.278431)
 collision_layer = 4
 monitorable = false
@@ -93,6 +95,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_nwl4w")
 
 [node name="ChaseArea" type="Area2D" parent="."]
+visible = false
 modulate = Color(0, 1, 1, 0.360784)
 collision_layer = 4
 monitorable = false
@@ -101,6 +104,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_im7no")
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 modulate = Color(0, 1, 1, 0.360784)
 collision_layer = 4
 monitorable = false
