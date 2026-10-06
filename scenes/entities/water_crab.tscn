@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://cnn7tkacf05qi"]
+
+[ext_resource type="Script" uid="uid://ccqyaaxlhn8qo" path="res://src/gameplay/enemies/states/Patrol.gd" id="1_w5t7e"]
+[ext_resource type="Script" uid="uid://c6riv6wdak0j3" path="res://src/gameplay/enemies/states/Chase.gd" id="2_c20pe"]
+[ext_resource type="Script" uid="uid://bl166behljf3j" path="res://src/gameplay/enemies/water_crab/Contact_attack.gd" id="3_qd2uf"]
+
+[sub_resource type="Animation" id="Animation_pf57e"]
+resource_name = "Attack"
+
+[sub_resource type="Animation" id="Animation_qsvne"]
+resource_name = "Chase"
+
+[sub_resource type="Animation" id="Animation_6k126"]
+resource_name = "Patrol"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rg35t"]
+_data = {
+&"Attack": SubResource("Animation_pf57e"),
+&"Chase": SubResource("Animation_qsvne"),
+&"Patrol": SubResource("Animation_6k126")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix64d"]
+radius = 41.0
+height = 104.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwl4w"]
+radius = 600.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_im7no"]
+radius = 700.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gg3c"]
+radius = 42.0
+height = 116.0
+
+[node name="WaterCrab" type="CharacterBody2D" unique_id=27354711]
+collision_layer = 4
+collision_mask = 11
+platform_floor_layers = 4294967282
+platform_wall_layers = 8
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=314713465]
+scale = Vector2(0.4, 0.4)
+
+[node name="EnemyAnimator" type="AnimationPlayer" parent="." unique_id=1251034697]
+libraries/ = SubResource("AnimationLibrary_rg35t")
+
+[node name="BaseCollider" type="CollisionShape2D" parent="." unique_id=100486114]
+visible = false
+position = Vector2(9, 14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ix64d")
+
+[node name="FlipGroundRay" type="RayCast2D" parent="." unique_id=488738776]
+position = Vector2(-50, 29)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="FlipWallRay" type="RayCast2D" parent="." unique_id=722960882]
+position = Vector2(-46, 14)
+target_position = Vector2(-30, 0)
+collision_mask = 8
+hit_from_inside = true
+
+[node name="ChaseCheckRay" type="RayCast2D" parent="." unique_id=2077405988]
+position = Vector2(9, 14)
+target_position = Vector2(0, 0)
+collision_mask = 10
+hit_from_inside = true
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2092273401]
+visible = false
+modulate = Color(1, 0, 0, 0.278431)
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1128617423]
+shape = SubResource("CircleShape2D_nwl4w")
+
+[node name="ChaseArea" type="Area2D" parent="." unique_id=1088860538]
+visible = false
+modulate = Color(0, 1, 1, 0.360784)
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea" unique_id=1130329390]
+shape = SubResource("CircleShape2D_im7no")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=82098192]
+visible = false
+modulate = Color(0, 1, 1, 0.360784)
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=880746397]
+position = Vector2(9, 14)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_2gg3c")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2054068770]
+
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=402633254]
+script = ExtResource("1_w5t7e")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=254044526 node_paths=PackedStringArray("chase_area", "attack_area", "chase_check_ray")]
+script = ExtResource("2_c20pe")
+chase_area = NodePath("../../ChaseArea")
+attack_area = NodePath("../../AttackArea")
+chase_check_ray = NodePath("../../ChaseCheckRay")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1548772762]
+script = ExtResource("3_qd2uf")
