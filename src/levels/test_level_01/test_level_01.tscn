@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d3gilt53fsi3e"]
+
+[ext_resource type="Script" uid="uid://ckuvaayfvy2ro" path="res://src/levels/test_level_01/test_level_01.gd" id="1_5ywb8"]
+
+[sub_resource type="TileSet" id="TileSet_cfrsm"]
+
+[node name="TestLevel01" type="Node2D" unique_id=1342388291 node_paths=PackedStringArray("player_camera", "player_spawn_locations")]
+script = ExtResource("1_5ywb8")
+player_camera = NodePath("LevelObjects/PlayerCamera")
+player_spawn_locations = [NodePath("LevelObjects/PlayerSpawn")]
+
+[node name="Background" type="Node2D" parent="." unique_id=807857631]
+
+[node name="LevelObjects" type="Node2D" parent="." unique_id=346350448]
+
+[node name="PlayerCamera" type="Camera2D" parent="LevelObjects" unique_id=1193105164]
+zoom = Vector2(0.9, 0.9)
+process_callback = 0
+position_smoothing_speed = 10.0
+
+[node name="PlayerSpawn" type="Marker2D" parent="LevelObjects" unique_id=1418943609]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="LevelObjects" unique_id=355307986]
+tile_set = SubResource("TileSet_cfrsm")
