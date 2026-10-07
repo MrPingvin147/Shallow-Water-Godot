@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://06smm8vnthpg"
-path="res://.godot/imported/chara_dash.png-12970fd219421be3d745c63bac7211ee.ctex"
+uid="uid://d3g14ecei30uw"
+path="res://.godot/imported/player_idle.png-2646369dd509b553c4470330cc591d77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/player/dash/chara_dash.png"
-dest_files=["res://.godot/imported/chara_dash.png-12970fd219421be3d745c63bac7211ee.ctex"]
+source_file="res://assets/art/characters/player/idle/player_idle.png"
+dest_files=["res://.godot/imported/player_idle.png-2646369dd509b553c4470330cc591d77.ctex"]
 
 [params]
 
